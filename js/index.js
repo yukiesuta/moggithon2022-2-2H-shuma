@@ -26,3 +26,17 @@ function fetchIssues() {
     </div>`
     }
 }
+
+
+function deleteIssue(id) {
+    let issues = JSON.parse(localStorage.getItem('issues'));
+
+    for (var i = 0; i < issues.length; i++) {
+        if (issues[i].id == id) {
+            issues[i].status = 'Closed';
+        }
+    }
+
+    localStorage.setItem('issues', JSON.parsestringify(issues));
+    fetchIssues();
+}
