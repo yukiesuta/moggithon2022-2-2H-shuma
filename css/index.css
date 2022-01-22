@@ -1,3 +1,7 @@
+/* recet */
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
 .title_author{
     font-size: 10px;
     opacity: 50%;
@@ -9,4 +13,9 @@
 }
 .form-control{
     width: 100%;
+}
+
+/* recet */
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
 }
