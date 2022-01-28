@@ -5,17 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/index.css">
+
 </head>
 <body>
     <main>
-        
+        <div class="container">
+            <!-- <div class="alert alert-warning alert-dismissible" role="alert"></div> -->
+            <h1>JS IssueTracker <span class="title_author">by TeamH</span></h1>
+            <div class="jumbotron">
+                <h3>Add New Issue:</h3>
+                <form id="issueInputForm">
+                    <div class="form-group">
+                        <label for="issueDescInput">Description</label><br>
+                        <input type="text" class="form-control" id="issueDescInput"
+                            placeholder="Describe the issue ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="issueSeverityInput">Severity</label><br>
+                        <select id="issueSeverityInput" class="form-control">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issueAssignedToInput">Assigned To</label><br>
+                        <input type="text" class="form-control" id="issueAssignedToInput"
+                            placeholder="Enter responsible ...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
     </main>
 
-<div class="col-log-12">
-    <div id="issueList">
-    </div>
-</div>
+
+    <!-- <div id="issuesList" class="col-10 m-auto mt-3 px-5 ">
+        <div class="well border px-5 py-3 bg-light">
+            <h6>Issue ID: ${id}</h6>
+            <p><span class="label label-info btn btn-info">${status}</span></p>
+            <h3>${desc}</h3>
+            <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+              </svg>
+            <p class="d-inline"><span class="glyphicon glyphicon-time">${severity}</span></p>
+            </div>
+            <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+            <p class="d-inline"><span class="glyphicon glyphicon-user">${assignedTo}</span></p>
+            </div>
+            <div class="mt-3">
+                <a href="#" onclick="setStatusClosed(\''${id}'\')" class="btn btn-warning">Close</a>
+                <a href="#" onclick="deleteIssue(\''${id}'\')" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div> -->
+
 
     <script src="../js/index.js"></script>
 </body>
