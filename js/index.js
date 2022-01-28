@@ -1,5 +1,11 @@
 'use strict'
 
+
+
+
+
+
+
 function fetchIssues() {
     // データの取得
     let issues = JSON.parse(localStorage.getItem('issues'));
