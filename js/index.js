@@ -1,5 +1,40 @@
 'use strict'
 
+const form = document.getElementById('issueInputForm');
+
+form.addEventListener('submit', input);
+
+function input(e) {
+    let descriptionInput = document.getElementById('issueDescInput').value;
+    let severityInput = document.getElementById('issueSevirityInput').value;
+    let assignedToInput = document.getElementById('issueAssignedToInput').value;
+    let statusInput = 'open';
+    // let idInput = ;
+
+
+    let issue = {
+        description: descriptionInput,
+        severity: severityInput,
+        assignedTo: assignedToInput,
+        status: statusInput,
+        // id: idInput,
+    }
+    if (localStorage.getItem('issues') == null) {
+        let issues = [];
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    } else {
+        let issues = JSON.parse(localStorage.getItem('issues'));
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    }
+
+    form.reset();
+
+    fetchIssues();
+
+    e.preventDefault();
+}
 
 
 
