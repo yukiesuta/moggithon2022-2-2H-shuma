@@ -11,7 +11,7 @@ function input(e) {
     let severityInput = document.getElementById('issueSeverityInput').value;
     let assignedToInput = document.getElementById('issueAssignedToInput').value;
     let statusInput = 'open';
-    // let idInput = ;
+    let idInput = chance.guid();
 
 
     let issue = {
@@ -19,7 +19,7 @@ function input(e) {
         severity: severityInput,
         assignedTo: assignedToInput,
         status: statusInput,
-        // id: idInput,
+        id: idInput,
     }
     if (localStorage.getItem('issues') == null) {
         var issues = [];
@@ -76,14 +76,13 @@ function fetchIssues() {
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               </svg>
         <p class="d-inline"><span class="glyphicon glyphicon-user">${assignedTo}</span></p>
-        <a href="#" onclick="setStatusClosed(\''${id}'\')" class="btn btn-warning">Close</a>
+        <a href="#" onclick="CloseIssue(\''${id}'\')" class="btn btn-warning">Close</a>
         <a href="#" onclick="deleteIssue(\''${id}'\')" class="btn btn-danger">Delete</a>
         </div>
      </div>
     </div>`
     }
 }
-
 
 function deleteIssue(id) {
     let issues = JSON.parse(localStorage.getItem('issues'));
@@ -96,4 +95,17 @@ function deleteIssue(id) {
 
     localStorage.setItem('issues', JSON.parsestringify(issues));
     fetchIssues();
+}
+
+function closeIssue(id){
+let issues = JSON.parse(localStorage.getItem('issues'));
+
+for (let i = 0; i < issues.length; i++) {
+    if(issues[i].id === id){
+        issues[i].status = 'Closed';
+    }
+}
+localStorage.setItem('issues', JSON.parsestringify(issues));
+
+fetchIssues();
 }
