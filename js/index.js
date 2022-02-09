@@ -1,8 +1,52 @@
 'use strict'
 
+
+const form = document.getElementById('issueInputForm');
+
+
+form.addEventListener('submit', input);
+
+function input(e) {
+    let descriptionInput = document.getElementById('issueDescInput').value;
+    let severityInput = document.getElementById('issueSeverityInput').value;
+    let assignedToInput = document.getElementById('issueAssignedToInput').value;
+    let statusInput = 'open';
+    // let idInput = ;
+
+
+    let issue = {
+        description: descriptionInput,
+        severity: severityInput,
+        assignedTo: assignedToInput,
+        status: statusInput,
+        // id: idInput,
+    }
+    if (localStorage.getItem('issues') == null) {
+        var issues = [];
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    } else {
+        var issues = JSON.parse(localStorage.getItem('issues'));
+        issues.push(issue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+    }
+
+    form.reset();
+
+    fetchIssues();
+
+    e.preventDefault();
+}
+
+
+
+
+
+
 function fetchIssues() {
     // データの取得
     let issues = JSON.parse(localStorage.getItem('issues'));
+    console.log(issues);
 
     // データを表示する先のHTML
     let issuesList = document.getElementById('issuesList');
@@ -15,7 +59,7 @@ function fetchIssues() {
         let assignedTo = issues[i].assignedTo;
         let status = issues[i].status;
 
-        issuesList.innerHTML += `<div id="issuesList" class="col-10 m-auto mt-3 px-5 ">
+        issuesList.innerHTML += `
         <div class="well border px-5 py-3 bg-light">
         <h6>Issue ID: ${id}</h6>
         <p><span class="label label-info btn btn-info">${status}</span></p>
