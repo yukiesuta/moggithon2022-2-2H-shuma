@@ -1,6 +1,5 @@
 'use strict'
 
-
 const form = document.getElementById('issueInputForm');
 
 
@@ -39,12 +38,36 @@ function input(e) {
 }
 
 
+function closeIssue(id){
+var issues = JSON.parse(localStorage.getItem('issues'));
 
+for (var i = 0; i < issues.length; i++) {
+    if(issues[i].id === id){
+        issues[i].status = 'Closed';
+    }
+}
+localStorage.setItem('issues', JSON.stringify(issues));
 
+fetchIssues();
+}
 
+function deleteIssue(id) {
+    var issues = JSON.parse(localStorage.getItem('issues'));
+  
+    for (var i = 0; i < issues.length; i++) {
+      if (issues[i].id == id) {
+        issues.splice(i, 1);
+      }
+    }
+  
+    localStorage.setItem('issues', JSON.stringify(issues));
+  
+    fetchIssues();
+  }
 
 function fetchIssues() {
     // データの取得
+    // console.log(localStorage.getItem('issues'));
     let issues = JSON.parse(localStorage.getItem('issues'));
     console.log(issues);
 
@@ -76,36 +99,33 @@ function fetchIssues() {
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               </svg>
         <p class="d-inline"><span class="glyphicon glyphicon-user">${assignedTo}</span></p>
-        <a href="#" onclick="CloseIssue(\''${id}'\')" class="btn btn-warning">Close</a>
-        <a href="#" onclick="deleteIssue(\''${id}'\')" class="btn btn-danger">Delete</a>
+        <a href="#" onclick="closeIssue('${id}')" class="btn btn-warning">Close</a>
+        <a href="#" onclick="deleteIssue('${id}')" class="btn btn-danger">Delete</a>
         </div>
-     </div>
-    </div>`
+        </div>
+        </div>`
+        
+        // issuesList.innerHTML +=   '<div class="well">'+
+        // '<h6>Issue ID: ' + id + '</h6>'+
+        // '<p><span class="label label-info">' + status + '</span></p>'+
+        // '<h3>' + desc + '</h3>'+
+        // '<p><span class="glyphicon glyphicon-time"></span> ' + severity + '</p>'+
+        // '<p><span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>'+
+        // '<a href="#" onclick="closeIssue(+ id +)" class="btn btn-warning">close</a> '+
+        // '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
+        // '</div>';
+        
     }
+    // console.log(issuesList);
 }
+{/* <a href="#" onclick="closeIssue(\''${id}'\')" class="btn btn-warning">close</a>
+<a href="#" onclick="deleteIssue(\''${id}'\')" class="btn btn-danger">Delete</a>  */}
+// \' = '
 
-function deleteIssue(id) {
-    let issues = JSON.parse(localStorage.getItem('issues'));
 
-    for (var i = 0; i < issues.length; i++) {
-        if (issues[i].id == id) {
-            issues.splice(i, 1);
-        }
-    }
 
-    localStorage.setItem('issues', JSON.parsestringify(issues));
-    fetchIssues();
-}
-
-function closeIssue(id){
-let issues = JSON.parse(localStorage.getItem('issues'));
-
-for (let i = 0; i < issues.length; i++) {
-    if(issues[i].id === id){
-        issues[i].status = 'Closed';
-    }
-}
-localStorage.setItem('issues', JSON.parsestringify(issues));
-
-fetchIssues();
-}
+var a = "ジャバ\スク\nリプト";
+var b = String.raw`ジャバ\スク\nリプト`;
+var c = `ジャバ\スク\nリプト`;
+console.log( a === b ); // true
+console.log( a ); // ジャバ\スク\nリプト
