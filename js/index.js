@@ -53,15 +53,15 @@ fetchIssues();
 
 function deleteIssue(id) {
     var issues = JSON.parse(localStorage.getItem('issues'));
-  
+
     for (var i = 0; i < issues.length; i++) {
       if (issues[i].id == id) {
         issues.splice(i, 1);
       }
     }
-  
+
     localStorage.setItem('issues', JSON.stringify(issues));
-  
+
     fetchIssues();
   }
 
@@ -104,7 +104,7 @@ function fetchIssues() {
         </div>
         </div>
         </div>`
-        
+
         // issuesList.innerHTML +=   '<div class="well">'+
         // '<h6>Issue ID: ' + id + '</h6>'+
         // '<p><span class="label label-info">' + status + '</span></p>'+
@@ -114,7 +114,7 @@ function fetchIssues() {
         // '<a href="#" onclick="closeIssue(+ id +)" class="btn btn-warning">close</a> '+
         // '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
         // '</div>';
-        
+
     }
     // console.log(issuesList);
 }
